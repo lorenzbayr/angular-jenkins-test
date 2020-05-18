@@ -6,14 +6,37 @@ pipeline {
     }
 
     stages {
-        stage('test') {
+
+        stage('dependencies') {
             steps {
-                echo "Database engine is ${DB_ENGINE}"
-                sh 'npm --version'
-                sh 'npm install'
-                sh 'npm test'
+                echo "Installing Dependencies"
+                sh 'npm ci'
             }
         }
+
+        stage('lint') {
+            steps {
+                echo "Linting application"
+                sh 'ng lint'
+            }
+        }
+
+        stage('test') {
+            steps {
+                echo "Running Tests"
+                echo "Database engine is ${DB_ENGINE}"
+                sh 'npm --version'
+                sh 'npm test --watch=false'
+            }
+        }
+
+        stage('build') {
+            steps {
+                echo "Running Build"
+                sh 'ng build --prod'
+            }
+        }
+
     }
     post {
         always {
