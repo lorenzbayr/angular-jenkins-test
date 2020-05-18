@@ -28,7 +28,7 @@ pipeline {
         stage('lint') {
             steps {
                 echo "Linting application"
-                sh 'npm lint'
+                sh 'npm run lint'
             }
         }
 
@@ -44,7 +44,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "Running Build"
-                sh 'npm build'
+                sh 'npm run build'
             }
         }
 
