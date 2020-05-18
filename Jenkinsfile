@@ -1,8 +1,14 @@
 pipeline {
     agent { docker { image 'node:14.2.0' } }
+
+    environment {
+        DB_ENGINE = 'sqlite'
+    }
+
     stages {
         stage('test') {
             steps {
+                echo "Database engine is ${DB_ENGINE}"
                 sh 'npm --version'
                 sh 'npm install'
                 sh 'npm test'
