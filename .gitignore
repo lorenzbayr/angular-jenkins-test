@@ -10,8 +10,11 @@
 # dependencies
 /node_modules
 
-# pact log files
+# pact log files and pact files
+# pact files will be generated in the pipeline
 /pact/logs/*
+/pact/pacts/*
+
 
 # profiling files
 chrome-profiler-events*.json

@@ -35,6 +35,8 @@ module.exports = function (config) {
       cors: true,
       spec: 3,
       port: 1234,
+      consumer: "User-Service",
+      provider: "User-Service",
       log: path.resolve(process.cwd(), './pact/logs', 'mockserver-integration.log'),
       dir: path.resolve(process.cwd(), './pact/pacts')
     }],

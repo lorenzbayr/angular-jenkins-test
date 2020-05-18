@@ -4,7 +4,7 @@ const opts = {
   pactBroker: '192.168.178.38:9292',
   pactBrokerUsername: 'lorenzbayr',
   pactBrokerPassword: 'test',
-  consumerVersion: '0.0.2',
+  consumerVersion: '0.0.3',
   pactFilesOrDirs: ['./pact/pacts']
 };
 
