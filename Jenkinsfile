@@ -32,14 +32,14 @@ pipeline {
             }
         }
 
-        // stage('test') {
-        //     steps {
-        //         echo "Running Tests"
-        //         echo "Database engine is ${DB_ENGINE}"
-        //         sh 'npm --version'
-        //         sh 'npm test --watch=false'
-        //     }
-        // }
+        stage('test') {
+            steps {
+                echo "Running Tests"
+                echo "Database engine is ${DB_ENGINE}"
+                sh 'npm --version'
+                sh 'npm test --watch=false'
+            }
+        }
 
         stage('build') {
             steps {
