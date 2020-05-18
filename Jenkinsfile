@@ -4,6 +4,8 @@ pipeline {
     environment {
         DB_ENGINE = 'sqlite'
         PACT_BROKER = '192.168.178.38:9292'
+        PACT_BROKER_USERNAME = 'lorenzbayr'
+        PACT_BROKER_PASSWORD = 'test'
     }
 
     stages {
