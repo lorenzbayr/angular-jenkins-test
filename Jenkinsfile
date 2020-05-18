@@ -10,6 +10,9 @@ pipeline {
         stage('dependencies') {
             steps {
                 echo "Installing Dependencies"
+                sh 'npm config set loglevel info'
+                sh 'npm config set registry http://registry.npmjs.org'
+                sh 'npm set progress=false'
                 sh 'npm install --verbose'
             }
         }
