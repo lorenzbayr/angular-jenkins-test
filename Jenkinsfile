@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'node:14.2.0' } }
+    agent { docker { image 'circleci/node:10.0.0-stretch-browsers' } }
 
     environment {
         DB_ENGINE = 'sqlite'
