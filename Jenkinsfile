@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         DB_ENGINE = 'sqlite'
+        PACT_BROKER = '192.168.178.38:9292'
     }
 
     stages {

@@ -1,10 +1,10 @@
 const Publisher = require('@pact-foundation/pact-node').Publisher;
 
 const opts = {
-  pactBroker: '192.168.178.38:9292',
+  pactBroker: process.env.PACT_BROKER,
   pactBrokerUsername: 'lorenzbayr',
   pactBrokerPassword: 'test',
-  consumerVersion: '0.0.3',
+  consumerVersion: '0.0.4',
   pactFilesOrDirs: ['./pact/pacts']
 };
 
