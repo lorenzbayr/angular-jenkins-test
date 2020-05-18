@@ -7,6 +7,12 @@ pipeline {
 
     stages {
 
+        stage('get configuration') {
+            sh 'npm config get registry'
+            sh 'npm config get http-proxy'
+            sh 'npm config get https-proxy'
+        }
+
         stage('dependencies') {
             steps {
                 echo "Installing Dependencies"
