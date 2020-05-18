@@ -23,11 +23,14 @@ describe('UserService', () => {
       }
     });
 
+    let userService: UserService;
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [ HttpClientModule ],
         providers: [ UserService ]
       });
+
+      userService = TestBed.inject(UserService);
     });
 
     afterEach(async () => {
@@ -57,7 +60,6 @@ describe('UserService', () => {
       });
 
       it('should query for a user', (done) => {
-        const userService: UserService = TestBed.inject(UserService);
         userService.get(expectedUser.id).subscribe({
           next: value => {
             expect(value).toEqual(expectedUser);
@@ -65,6 +67,42 @@ describe('UserService', () => {
           },
           error: err => done.fail(err)
         });
+      });
+
+    });
+
+    describe('create a user', () => {
+
+      const expectedUser: User = {
+        id: 4,
+        name: 'Heinz'
+      };
+
+      beforeAll((done) => {
+        provider.addInteraction({
+          state: 'create a new user with success',
+          uponReceiving: 'a POST request to create a User',
+          withRequest: {
+            method: 'POST',
+            path: '/api/users',
+            body: { name: 'Heinz' }
+          },
+          willRespondWith: {
+            status: 201,
+            body: expectedUser
+          }
+        }).then(done, done.fail);
+      });
+
+      it('should create a new user', (done) => {
+        userService.create({ name: 'Heinz' })
+          .subscribe({
+            next: value => {
+              expect(value).toEqual(expectedUser);
+              done();
+            },
+            error: err => console.error(err)
+          });
       });
 
     });
