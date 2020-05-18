@@ -28,7 +28,7 @@ pipeline {
         stage('lint') {
             steps {
                 echo "Linting application"
-                sh 'ng lint'
+                sh 'npm lint'
             }
         }
 
@@ -44,7 +44,7 @@ pipeline {
         stage('build') {
             steps {
                 echo "Running Build"
-                sh 'ng build --prod'
+                sh 'npm build'
             }
         }
 
