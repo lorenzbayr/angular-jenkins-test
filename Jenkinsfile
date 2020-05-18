@@ -41,6 +41,13 @@ pipeline {
             }
         }
 
+        stage('share pacts') {
+          steps {
+            echo "Sharing PactFiles"
+            sh 'npm run share:pact'
+          }
+        }
+
         stage('build') {
             steps {
                 echo "Running Build"
