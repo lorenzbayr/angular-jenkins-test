@@ -24,4 +24,11 @@ export class UserService {
       createData
     );
   }
+
+  put(id: number, updateData: UserCreateData): Observable<User> {
+    return this.http.put<User>(
+      `${this.BASE_URL}/${id}`,
+      updateData
+    );
+  }
 }

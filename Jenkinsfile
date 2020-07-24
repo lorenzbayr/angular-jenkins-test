@@ -57,8 +57,8 @@ pipeline {
                 sh 'npm run build'
             }
         }
-
     }
+    
     post {
         always {
             echo 'The pipeline was run'

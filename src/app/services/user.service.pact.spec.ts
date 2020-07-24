@@ -107,4 +107,40 @@ describe('UserService', () => {
 
     });
 
+    describe('update a user', () => {
+
+      const expectedUser: User = {
+        id: 4,
+        name: 'Hans'
+      };
+
+      beforeAll((done) => {
+        provider.addInteraction({
+          state: 'update a user with success',
+          uponReceiving: 'a PUT request to update a User',
+          withRequest: {
+            method: 'PUT',
+            path: '/api/users/4',
+            body: { name: 'Hans' }
+          },
+          willRespondWith: {
+            status: 200,
+            body: expectedUser
+          }
+        }).then(done, done.fail);
+      });
+
+      it('should create a new user', (done) => {
+        userService.put(4, { name: 'Hans' })
+          .subscribe({
+            next: value => {
+              expect(value).toEqual(expectedUser);
+              done();
+            },
+            error: err => console.error(err)
+          });
+      });
+
+    });
+
 });
